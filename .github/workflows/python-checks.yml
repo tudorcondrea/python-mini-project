@@ -14,28 +14,28 @@ jobs:
       uses: actions/setup-python@v3
       with:
         python-version: ${{ matrix.python-version }}
-    - if: always()
     - name: Install dependencies
+      if: always()
       run: |
         python -m pip install --upgrade pip
         pip install pylint ruff black bandit pytype
-    - if: always()
     - name: Analysing the code with pylint
+      if: always()
       run: |
         pylint $(git ls-files './Binary_tree/*.py')
-    - if: always()
     - name: Analysing the code with ruff
+      if: always()
       run: |
         ruff $(git ls-files './Binary_tree/*.py')
-    - if: always()
     - name: Reformating the code with black
+      if: always()
       run: |
         black $(git ls-files './Binary_tree/*.py')
-    - if: always()
     - name: Analysing the code with bandit
+      if: always()
       run: |
         bandit $(git ls-files './Binary_tree/*.py')
-    - if: always()
     - name: Analysing the code with pytype
+      if: always()
       run: |
         pytype $(git ls-files './Binary_tree/*.py')
